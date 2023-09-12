@@ -23,24 +23,30 @@ function generatePassword() {
     alert("Password must be between 8 and 128 characters.")
     generatePassword();
   } else {
+    // Asks user if they'd like to include lower case letters
     if (window.confirm("Click 'okay' to include LOWER CASE letters.")) {
       characters = lowerCase.concat(characters);
     }
+    // Asks user if they'd like to include upper case letters
     if (window.confirm("Click 'okay' to include UPPER CASE letters.")) {
       characters = upperCase.concat(characters);
     }
+    // Asks user if they'd like to include numbers
     if (window.confirm("Click 'okay' to include numbers.")) {
       characters = num.concat(characters);
     }
+    // Asks user if they'd like to include special characters
     if (window.confirm("Click 'okay' to include special characters.")) {
       characters = special.concat(characters);
     }
     if (characters.length < 1) {
+      //Aborts password generation if there is no selected character type included
       alert("Please include at least one type of character. ");
       generatePassword();
     } else {
       for(var i = 0; i < charactersNum; i++) {
-        randomPassword.push(characters[random(0, characters.length-1)]);
+        randomPassword.push(characters[random(0, characters.length-1)]); // Generates random characters based on the selected amount of characters by the user and pushes the characters-
+        // - to 'randomPassword'
       }
     }
   }
